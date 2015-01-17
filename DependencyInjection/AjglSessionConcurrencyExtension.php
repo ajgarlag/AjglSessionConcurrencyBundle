@@ -65,7 +65,7 @@ class AjglSessionConcurrencyExtension extends Extension
 
         $authenticationStrategies[] = new Reference('security.authentication.session_strategy');
 
-        if (isset($config['register_new_sessions']) && $config['register_new_sessions'] == true) {
+        if (isset($config['register_new_sessions']) && $config['register_new_sessions'] === true) {
             $registerSessionStrategyId = 'ajgl.security.authentication.session_strategy.register.'.$id;
             $container->setDefinition(
                 $registerSessionStrategyId,
