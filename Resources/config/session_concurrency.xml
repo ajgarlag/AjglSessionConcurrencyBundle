@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+
+        <parameter type="collection" key="ajgl.security.authentication.session_strategy.refererers">
+            <parameter type="collection">
+                <parameter key="prefix">security.authentication.listener.form</parameter>
+                <parameter key="index">2</parameter>
+            </parameter>
+            <parameter type="collection">
+                <parameter key="prefix">security.authentication.listener.simple_form</parameter>
+                <parameter key="index">2</parameter>
+            </parameter>
+        </parameter>
+
+        <parameter type="collection" key="ajgl.security.authentication.sessionconcurrency_firewalls" />
+
+    </parameters>
+
+    <services>
+
+        <service id="ajgl.security.session_registry.storage.file" class="Ajgl\Security\Http\Session\Registry\MockFileSessionRegistryStorage" public="false">
+            <argument>%kernel.cache_dir%/session_registry</argument>
+        </service>
+
+        <service id="ajgl.security.session_registry" class="Ajgl\Security\Http\Session\Registry\SessionRegistry" public="true">
+            <argument type="service" id="security.session_registry.storage" />
+        </service>
+
+        <service id="ajgl.security.authentication.session_strategy.composite" class="Ajgl\Security\Http\Session\CompositeSessionAuthenticationStrategy" abstract="true" public="false">
+            <argument type="collection" /> <!-- delegate Strategies -->
+        </service>
+
+        <service id="ajgl.security.authentication.session_strategy.concurrency_control" class="Ajgl\Security\Http\Session\ConcurrentSessionControlAuthenticationStrategy" abstract="true" public="false">
+            <argument type="service" id="ajgl.security.session_registry" />
+            <argument /> <!-- maximum sessions -->
+            <argument /> <!-- error if maximum exceeded -->
+        </service>
+
+        <service id="ajgl.security.authentication.session_strategy.register" class="Ajgl\Security\Http\Session\RegisterSessionAuthenticationStrategy" abstract="true" public="false">
+            <argument type="service" id="ajgl.security.session_registry" />
+        </service>
+
+    </services>
+
+
+</container>

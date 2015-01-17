@@ -1,0 +1,13 @@
+imports:
+    - { resource: ./config.yml }
+
+ajgl_session_expiration:
+    firewalls:
+        default:
+            max_idle_time: 2
+            expiration_url: /expired
+
+ajgl_session_concurrency:
+    firewalls:
+        default:
+            error_if_maximum_exceeded: false
