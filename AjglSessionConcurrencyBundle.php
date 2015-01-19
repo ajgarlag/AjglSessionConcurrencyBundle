@@ -13,6 +13,7 @@ namespace Ajgl\Bundle\SessionConcurrencyBundle;
 
 use Ajgl\Bundle\SessionConcurrencyBundle\DependencyInjection\Compiler\AddSessionConcurrencyControlPass;
 use Ajgl\Bundle\SessionConcurrencyBundle\DependencyInjection\Compiler\OverrideSessionExpirationListenerPass;
+use Ajgl\Bundle\SessionConcurrencyBundle\DependencyInjection\Compiler\OverrideSessionLogoutHandlerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -29,6 +30,7 @@ class AjglSessionConcurrencyBundle extends Bundle
 
         $container->addCompilerPass(new AddSessionConcurrencyControlPass());
         $container->addCompilerPass(new OverrideSessionExpirationListenerPass());
+        $container->addCompilerPass(new OverrideSessionLogoutHandlerPass());
 
         parent::build($container);
     }

@@ -45,6 +45,10 @@
             <argument type="service" id="ajgl.security.session_registry" />
         </service>
 
+        <service id="ajgl.security.logout.handler.session" class="Ajgl\Security\Http\Logout\SessionLogoutHandler" public="false">
+            <argument type="service" id="ajgl.security.session_registry" />
+        </service>
+
     </services>
 
 

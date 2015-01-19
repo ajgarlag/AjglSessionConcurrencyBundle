@@ -46,6 +46,19 @@ class SessionConcurrencyTest extends WebTestCase
         $this->assertRedirect($client2->getResponse(), '/login');
     }
 
+    public function testSessionIsRemovedFromRegistryOnLogout()
+    {
+        $client = $this->createClient(array('test_case' => 'SessionConcurrency', 'root_config' => 'config.yml'));
+        $form1 = $client->request('GET', '/login')->selectButton('login')->form();
+        $form1['_username'] = 'antonio';
+        $form1['_password'] = 'secret';
+        $client->submit($form1);
+        $sessionRegistry = $client->getContainer()->get('ajgl.security.session_registry');
+        $this->assertCount(1, $sessionRegistry->getAllSessions('antonio'));
+        $client->request('GET', '/logout_path');
+        $this->assertCount(0, $sessionRegistry->getAllSessions('antonio'));
+    }
+
     public function testOldSessionExpiresConcurrentSessionsGreaterOrEqualThanMaximun()
     {
         $client1 = $this->createClient(array('test_case' => 'SessionConcurrency', 'root_config' => 'config_expiration.yml'));

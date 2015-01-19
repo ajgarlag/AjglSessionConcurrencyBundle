@@ -24,6 +24,8 @@ security:
                 check_path: /login_check
                 default_target_path: /profile
             anonymous: ~
+            logout:
+                path: form_logout
 
     access_control:
         - { path: .*, roles: IS_AUTHENTICATED_FULLY }
