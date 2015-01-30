@@ -15,7 +15,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Ajgl\\Bundle\\SessionConcurrencyBundle\\": ""
+            "Ajgl\\Bundle\\SessionConcurrencyBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ajgl\\Bundle\\SessionConcurrencyBundle\\Tests\\": "tests/"
         }
     },
     "require": {

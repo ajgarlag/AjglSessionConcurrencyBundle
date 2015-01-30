@@ -16,7 +16,7 @@ Documentation
 
 The documentation is stored in the `Resources/doc/index.md` file in this bundle:
 
-[Read the Documentation](Resources/doc/index.md)
+[Read the Documentation](src/Resources/doc/index.md)
 
 
 Installation
@@ -30,7 +30,7 @@ License
 
 This bundle is under the MIT license. The complete license is stored in the `Resources/meta/LICENSE` file in this bundle:
 
-[Read the License](Resources/meta/LICENSE)
+[Read the License](src/Resources/meta/LICENSE)
 
 
 Badges
