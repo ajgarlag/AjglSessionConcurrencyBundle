@@ -22,7 +22,7 @@ class AddSessionConcurrencyControlPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        foreach ($container->getParameter('ajgl.security.authentication.sessionconcurrency_firewalls') as $id => $strategy) {
+        foreach ($container->getParameter('ajgl.security.authentication.session_concurrency_firewalls') as $id => $strategy) {
             $this->overrideFirewallSessionStrategyReferences($container, $id, $strategy);
         }
     }

@@ -40,7 +40,7 @@ class AjglSessionConcurrencyExtension extends Extension
                 $sessionAuthenticationStrategyId = $this->createConcurrentSessionAuthenticationStrategy($container, $id, $sessionConcurrencyConfig);
                 $firewalls[$id] = $sessionAuthenticationStrategyId;
             }
-            $container->setParameter('ajgl.security.authentication.sessionconcurrency_firewalls', $firewalls);
+            $container->setParameter('ajgl.security.authentication.session_concurrency_firewalls', $firewalls);
         }
     }
 

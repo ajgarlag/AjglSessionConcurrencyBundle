@@ -23,13 +23,13 @@ class OverrideSessionExpirationListenerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        foreach (array_keys($container->getParameter('ajgl.security.authentication.sessionconcurrency_firewalls')) as $id) {
-            $sessionExpirationListenerId = 'ajgl.security.authentication.sessionexpiration_listener.'.$id;
+        foreach (array_keys($container->getParameter('ajgl.security.authentication.session_concurrency_firewalls')) as $id) {
+            $sessionExpirationListenerId = 'ajgl.security.authentication.session_expiration_listener.'.$id;
             if ($container->has($sessionExpirationListenerId)) {
                 $oldDefinition = $container->findDefinition($sessionExpirationListenerId);
                 $arguments = $oldDefinition->getArguments();
 
-                $newDefinition = new DefinitionDecorator('ajgl.security.authentication.sessionregistryexpiration_listener');
+                $newDefinition = new DefinitionDecorator('ajgl.security.authentication.session_registry_expiration_listener');
                 array_unshift($arguments, new Reference('ajgl.security.session_registry'));
                 $newDefinition->setArguments($arguments);
 

@@ -17,7 +17,7 @@
             </parameter>
         </parameter>
 
-        <parameter type="collection" key="ajgl.security.authentication.sessionconcurrency_firewalls" />
+        <parameter type="collection" key="ajgl.security.authentication.session_concurrency_firewalls" />
 
     </parameters>
 

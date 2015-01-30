@@ -4,12 +4,8 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <parameters>
-        <parameter type="collection" key="ajgl.security.authentication.sessionexpiration_firewalls" />
-    </parameters>
-
     <services>
-        <service id="ajgl.security.authentication.sessionregistryexpiration_listener" class="Ajgl\Security\Http\Firewall\SessionRegistryExpirationListener" public="false" abstract="true">
+        <service id="ajgl.security.authentication.session_registry_expiration_listener" class="Ajgl\Security\Http\Firewall\SessionRegistryExpirationListener" public="false" abstract="true">
             <tag name="monolog.logger" channel="security" />
             <argument type="service" id="ajgl.security.session_registry" />
             <argument type="service" id="security.context" />
