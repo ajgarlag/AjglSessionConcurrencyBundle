@@ -49,6 +49,16 @@
             <argument type="service" id="ajgl.security.session_registry" />
         </service>
 
+        <service id="ajgl.security.session_registry.garbage_collector" class="Ajgl\Security\Http\EventListener\SessionRegistryGarbageCollectorListener" public="true">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="ajgl.security.session_registry" />
+        </service>
+
+        <service id="ajgl.security.session_registry.refresh_last_used" class="Ajgl\Security\Http\EventListener\RefreshSessionRegistryLastUsedListener" public="true">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="ajgl.security.session_registry" />
+        </service>
+
     </services>
 
 

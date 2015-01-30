@@ -19,7 +19,7 @@
         }
     },
     "require": {
-        "ajgl/session-concurrency": ">=0.1.1",
+        "ajgl/session-concurrency": "~0.2",
         "ajgl/session-expiration-bundle": "~0.1",
         "symfony/security-bundle": "~2.3",
         "symfony/config": "~2.3",
