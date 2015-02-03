@@ -23,7 +23,7 @@
 
     <services>
 
-        <service id="ajgl.security.session_registry.storage.file" class="Ajgl\Security\Http\Session\Registry\MockFileSessionRegistryStorage" public="false">
+        <service id="ajgl.security.session_registry.storage.file" class="Ajgl\Security\Http\Session\Registry\Storage\FileSessionRegistryStorage" public="false">
             <argument>%kernel.cache_dir%/session_registry</argument>
         </service>
 
